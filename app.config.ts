@@ -1,0 +1,83 @@
+import { ConfigContext, ExpoConfig } from "expo/config";
+
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "expo-chime-demo-app",
+  slug: "expo-chime-demo-app",
+  version: "1.0.0",
+  orientation: "portrait",
+  icon: "./assets/images/icon.png",
+  scheme: "myapp",
+  userInterfaceStyle: "automatic",
+  newArchEnabled: true,
+  jsEngine: "hermes",
+  notification: {
+    androidMode: "collapse",
+    androidCollapsedTitle: "New messages",
+  },
+  ios: {
+    supportsTablet: true,
+    config: {
+      usesNonExemptEncryption: false,
+    },
+    bundleIdentifier: "com.omnicore.expo-chime-demo",
+    infoPlist: {
+      UIBackgroundModes: ["remote-notification"],
+      NSCameraUsageDescription: "We need access to your camera to capture photos and videos.",
+      NSMicrophoneUsageDescription: "We need access to your microphone to record audio.",
+    },
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: "./assets/images/adaptive-icon.png",
+      backgroundColor: "#ffffff",
+    },
+    permissions: [
+      // Chime SDK required permissions
+      "android.permission.CAMERA",
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.RECORD_AUDIO",
+    ],
+    package: "com.omnicore.expo_chime_demo",
+  },
+  web: {
+    bundler: "metro",
+    output: "static",
+    favicon: "./assets/images/favicon.png",
+  },
+  plugins: [
+    "expo-router",
+    [
+      "expo-splash-screen",
+      {
+        image: "./assets/images/splash-icon.png",
+        imageWidth: 200,
+        resizeMode: "contain",
+        backgroundColor: "#ffffff",
+      },
+    ],
+    [
+      "expo-secure-store",
+      {
+        requireAuthentication: false,
+      },
+    ],
+    [
+      "react-native-permissions",
+      {
+        iosPermissions: ["Camera", "Microphone"],
+      },
+    ],
+  ],
+  experiments: {
+    typedRoutes: true,
+  },
+  extra: {
+    router: {
+      origin: false,
+    },
+    eas: {
+      projectId: "b90347a9-ca6d-4949-9545-82fcce6ed6aa",
+    },
+  },
+});
