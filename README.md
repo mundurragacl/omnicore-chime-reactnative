@@ -79,7 +79,7 @@ Forked from [vintasoftware/expo-chime-demo](https://github.com/vintasoftware/exp
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/matundu/expo-chime-demo.git
+git clone https://github.com/mundurragacl/omnicore-chime-reactnative.git
 cd expo-chime-demo
 ```
 
@@ -153,7 +153,3 @@ The `expo-aws-chime` module exposes the following through the Expo Modules API:
 ## License
 
 This project is licensed under the MIT License — see the `LICENSE.txt` file for details.
-
-## Author
-
-Matias Undurraga
